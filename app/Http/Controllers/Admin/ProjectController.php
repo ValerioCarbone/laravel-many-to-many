@@ -6,6 +6,7 @@ use App\Models\Admin\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index');
+        $data = Project::all();
+        return view('admin.projects.index', compact('data'));
     }
 
     /**
