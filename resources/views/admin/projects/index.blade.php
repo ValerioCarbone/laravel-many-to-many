@@ -10,6 +10,9 @@
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
+                        <th>
+                            <a class="btn btn-primary btn-sm" href="{{ route('admin.projects.create') }}">Nuovo</a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +26,12 @@
                             </td>
                             <td>
                                 {{ $project->content }}
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
                             </td>
                         </tr>
                     @empty
