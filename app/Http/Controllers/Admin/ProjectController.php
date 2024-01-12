@@ -30,11 +30,18 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|max:255|string|unique:projects',
+            'content' => 'nullable|min:5|string',
+            // 'category_id' => 'nullable|exists:categories,id',
+            // 'tags' => 'exists:tags,id'
+        ]);
+
         $data = $request->all();
         $new_project = Project::create($data);
-        return redirect()->route('projects.show', $new_project);
+        return redirect()->route('admin.projects.show', $new_project);
     }
 
     /**
@@ -50,15 +57,24 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255|string|unique:projects',
+            'content' => 'nullable|min:5|string',
+            // 'category_id' => 'nullable|exists:categories,id',
+            // 'tags' => 'exists:tags,id'
+        ]);
+
+        $data = $request->all();
+        $project->update($data);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -66,6 +82,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 }
