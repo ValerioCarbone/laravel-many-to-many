@@ -11,8 +11,10 @@
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th>
-                            <a class="btn btn-primary btn-sm" href="{{ route('admin.projects.create') }}">Nuovo</a>
+                            <a class="btn btn-primary " href="{{ route('admin.projects.create') }}">Nuovo</a>
                         </th>
+                        <th></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -28,10 +30,14 @@
                                 {{ $project->content }}
                             </td>
                             <td>
-
+                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-info btn-sm">Edit</a>
                             </td>
                             <td>
-
+                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form>
                             </td>
                         </tr>
                     @empty
