@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <div class="container">
-            <h2>Your project</h2>
+            <h1 class="text-center text-primary">Your project</h1>
             <form action="{{ route('admin.projects.update', $project) }}" method="post">
 
                 @method('put')
@@ -16,12 +16,12 @@
                             value="{{ old('title', $project->title) }}">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                        <label for="content" class="form-label">Content</label>
                         <textarea class="form-control" name="content" id="content" rows="3">{{ old('content', $project->content) }}</textarea>
                     </div>
-                </div>
 
-                <input type="submit" value="Edit">
+                    <input type="submit" value="Edit">
+                </div>
             </form>
         </div>
 

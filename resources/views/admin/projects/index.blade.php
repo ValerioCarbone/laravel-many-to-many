@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
+    <section class="py-4">
         <div class="container">
-            <h2 class="text-center mb-3">Your Projects</h2>
             <table class="table">
                 <thead>
                     <tr>
@@ -11,7 +10,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th>
-                            <a class="btn btn-primary " href="{{ route('admin.projects.create') }}">Nuovo</a>
+                            <a class="btn btn-primary " href="{{ route('admin.projects.create') }}">New</a>
                         </th>
                         <th></th>
 
@@ -21,7 +20,9 @@
                     @forelse ($data as $project)
                         <tr>
                             <td>
-                                {{ $project->id }}
+                                <strong>
+                                    {{ $project->id }}
+                                </strong>
                             </td>
                             <td>
                                 {{ $project->title }}
