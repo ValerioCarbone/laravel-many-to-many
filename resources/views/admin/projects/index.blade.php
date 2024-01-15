@@ -33,13 +33,13 @@
                                 {{ $project->content }}
                             </td>
                             <td>
-                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-info">Edit</a>
                             </td>
                             <td>
                                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
                             </td>
                         </tr>
