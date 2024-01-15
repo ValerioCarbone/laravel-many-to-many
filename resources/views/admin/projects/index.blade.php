@@ -25,7 +25,9 @@
                                 </strong>
                             </td>
                             <td>
-                                {{ $project->title }}
+                                <a href="{{ route('admin.projects.show', $project) }}">
+                                    {{ $project->title }}
+                                </a>
                             </td>
                             <td>
                                 {{ $project->content }}
